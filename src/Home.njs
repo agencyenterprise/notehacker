@@ -70,17 +70,19 @@ class Home extends Nullstack {
       <section>
         <div class="wrapper">
           <div class="controls pb-2">
-            <Button onclick={this.confirmDialog}>
-                <StopIcon class="mr-1"/>
-                Stop
-            </Button>
             <div class="time text-slate-700 text-3xl">
               {secondsToHms(this.elapsedSeconds)}
             </div>
-            <Button onclick={this.startPause}>
-                {this.timerId ? <PauseIcon class="mr-1"/> : <PlayIcon class="mr-1"/>}
-                {this.timerId ? 'Pause' : 'Play'}
-            </Button>
+            <div>
+                <Button class="mr-2" onclick={this.startPause}>
+                    {this.timerId ? <PauseIcon class="mr-1"/> : <PlayIcon class="mr-1"/>}
+                    {this.timerId ? 'Pause' : 'Play'}
+                </Button>
+                <Button disabled={!this.timerId} onclick={this.confirmDialog}>
+                    <StopIcon class="mr-1"/>
+                    Stop
+                </Button>
+            </div>
           </div>
           <div class="notes">
             <Textarea
