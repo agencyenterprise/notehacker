@@ -55,14 +55,14 @@ class Home extends Nullstack {
           </div>
           <div class="notes">
             <Textarea bind={this.notes} disabled={this.isNoteEnabled} oninput={this.addNewNote}></Textarea>
-            <Button id="btn-clipboard">Copy to clipboard</Button>
+            <Button id="btn-clipboard" class="my-2">Copy to clipboard</Button>
           </div>
         </div>
-        <dialog id="confirm-dialog">
+        <dialog id="confirm-dialog" class="p-6">
           <form method="dialog">
             <p>⚠️ Do you want stop the timer? Your notes will be deleted! ⚠️</p>
             <menu>
-              <Button value="no">No</Button>
+              <Button value="no" class="mr-2.5">No</Button>
               <Button value="yes">Yes</Button>
             </menu>
           </form>
