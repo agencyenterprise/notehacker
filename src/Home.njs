@@ -6,6 +6,8 @@ import Button from "./components/Button";
 import Textarea from "./components/Textarea";
 import Confirm from "./components/Confirm";
 import CopyIcon from "./components/CopyIcon";
+import PlayIcon from "./components/PlayIcon";
+import PauseIcon from "./components/PauseIcon";
 
 class Home extends Nullstack {
   elapsedSeconds = 0;
@@ -71,7 +73,10 @@ class Home extends Nullstack {
             <div class="time text-slate-700 text-3xl">
               {secondsToHms(this.elapsedSeconds)}
             </div>
-            <Button onclick={this.startPause}>Play/Pause</Button>
+            <Button onclick={this.startPause}>
+                {this.timerId ? <PauseIcon class="mr-1"/> : <PlayIcon class="mr-1"/>}
+                {this.timerId ? 'Pause' : 'Play'}
+            </Button>
           </div>
           <div class="notes">
             <Textarea
