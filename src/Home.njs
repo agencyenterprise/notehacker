@@ -17,13 +17,16 @@ class Home extends Nullstack {
       this.isNoteEnabled = false;
       return;
     }
-    this.isNoteEnabled = true;
-    this.timerId = clearInterval(this.timerId);
+    this.disabledNote();
   }
 
   stop() {
-    this.timerId = clearInterval(this.timerId);
     this.elapsedSeconds = 0;
+    this.disabledNote();
+  }
+
+  disabledNote() {
+    this.timerId = clearInterval(this.timerId);
     this.isNoteEnabled = true;
   }
 
@@ -47,20 +50,20 @@ class Home extends Nullstack {
         <div class="wrapper">
           <div class="controls">
             <Button onclick={this.confirmDialog}>Stop</Button>
-            <div class="time">{secondsToHms(this.elapsedSeconds)}</div>
+            <div class="time" style="color: #000">{secondsToHms(this.elapsedSeconds)}</div>
             <Button onclick={this.startPause}>Play/Pause</Button>
           </div>
           <div class="notes">
             <Textarea bind={this.notes} disabled={this.isNoteEnabled} oninput={this.addNewNote}></Textarea>
-            <button id="btn-clipboard">Copy to clipboard</button>
+            <Button id="btn-clipboard">Copy to clipboard</Button>
           </div>
         </div>
         <dialog id="confirm-dialog">
           <form method="dialog">
             <p>⚠️ Do you want stop the timer? Your notes will be deleted! ⚠️</p>
             <menu>
-              <button value="no">No</button>
-              <button value="yes">Yes</button>
+              <Button value="no">No</Button>
+              <Button value="yes">Yes</Button>
             </menu>
           </form>
         </dialog>
