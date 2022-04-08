@@ -4,8 +4,10 @@ import Home from "./Home";
 import "./styles.css";
 
 class Application extends Nullstack {
-  prepare({ page }) {
+  prepare({ project, page }) {
     page.locale = "en-US";
+    page.title = `${project.name}`;
+    page.description = `${project.name} was made with Nullstack`;
   }
 
   renderHead() {

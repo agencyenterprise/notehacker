@@ -7,6 +7,7 @@ class Home extends Nullstack {
   elapsedTime = "00:00:00";
   timerId;
   notes = "";
+  isNoteEnabled = true;
 
   startPause() {
     if (!this.timerId) {
@@ -31,9 +32,8 @@ class Home extends Nullstack {
     });
   }
 
-  prepare({ project, page }) {
-    page.title = `${project.name}`;
-    page.description = `${project.name} was made with Nullstack`;
+  addNewNote() {
+    console.log('[dev] new note added')
   }
 
   render() {
@@ -45,11 +45,8 @@ class Home extends Nullstack {
             <div class="time">{secondsToHms(this.elapsedSeconds)}</div>
             <button onclick={this.startPause}>Play/Pause</button>
           </div>
-          <div class="note">
-            <input id="input-note" type="text" required disabled />
-          </div>
           <div class="notes">
-            <textarea bind={this.notes}></textarea>
+            <textarea bind={this.notes} disabled={this.isNoteEnabled} oninput={this.addNewNote}></textarea>
             <button id="btn-clipboard">Copy to clipboard</button>
             <button id="btn-delete-notes">Delete notes</button>
           </div>
