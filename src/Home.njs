@@ -1,88 +1,42 @@
-import Nullstack from 'nullstack';
-import './Home.scss';
-import Logo from 'nullstack/logo';
+import Nullstack from "nullstack";
+import "./Home.scss";
 
 class Home extends Nullstack {
-
   prepare({ project, page }) {
-    page.title = `${project.name} - Welcome to Nullstack!`;
+    page.title = `${project.name}`;
     page.description = `${project.name} was made with Nullstack`;
-  }
-
-  renderLink({ children, href }) {
-    const link = href + '?ref=create-nullstack-app';
-    return (
-      <a href={link} target="_blank" rel="noopener noreferrer">
-        {children}
-      </a>
-    )
   }
 
   render({ project }) {
     return (
       <section>
-        <article>
-          <Link href="https://nullstack.app/">
-            <Logo height={60} light />
-          </Link>
-          <h1> {project.name}</h1>
-          <p>
-            We made some examples to help you getting started! Take a look at the
-            <Link href="vscode://file//Users/edysegura/ae-workspace/notehacker/notehacker/src">
-              src folder
-            </Link>.
-          </p>
-          <span>
-            Hint: we have a
-            <Link href="vscode:extension/ChristianMortaro.vscode-nullstack">
-              VS Code Extension
-            </Link>
-          </span>
-          <ul>
-            <li>
-              <Link href="https://nullstack.app/renderable-components">
-                🎉 Create your first component 
-              </Link>
-            </li>
-            <li>
-              <Link href="https://nullstack.app/routes-and-params">
-                ✨ Set your first route
-              </Link>
-            </li>
-            <li>
-              <Link href="https://nullstack.app/context">
-                ⚡ Define your context
-              </Link>
-            </li>
-            <li>
-              <Link href="https://github.com/nullstack/nullstack/stargazers">
-                ⭐ Leave a star on github
-              </Link>
-            </li>
-            <li>
-              <Link href="https://youtube.com/nullstack">
-                🎬 Subscribe to our Youtube Channel
-              </Link>
-            </li>
-          </ul>
-          <div>
-            <span>
-              As da Vinci would say:
-            </span>
-            <blockquote>
-              "Simplicity is the ultimate sophistication"
-            </blockquote>
+        <div class="wrapper">
+          <div class="controls">
+            <button id="btn-stop">Stop</button>
+            <div class="time">00:00:00</div>
+            <button id="btn-play">Play/Pause</button>
           </div>
-        </article>
-        <aside>
-          <Link href="https://nullstack.app/waifu">
-            <img src="/nulla-chan.webp" alt="Nulla-Chan: Nullstack's official waifu" />
-          </Link>
-        </aside>
+          <div class="note">
+            <input id="input-note" type="text" required disabled />
+          </div>
+          <div class="notes">
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <button id="btn-clipboard">Copy to clipboard</button>
+            <button id="btn-delete-notes">Delete notes</button>
+          </div>
+        </div>
+        <dialog id="confirm-dialog">
+          <form method="dialog">
+            <p>Do you want stop the timer?</p>
+            <menu>
+              <button value="no">No</button>
+              <button value="yes">Yes</button>
+            </menu>
+          </form>
+        </dialog>
       </section>
-    )
+    );
   }
-
 }
 
 export default Home;

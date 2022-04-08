@@ -1,43 +1,24 @@
-section {
-  width: 100%;
-  max-width: 800px;
-  min-height: 100vh;
-  margin: 0 auto;
+.wrapper {
+  width: 80%;
+  height: 80vh;
+  margin: 1rem auto 0;
+}
+
+.wrapper div {
+  margin-bottom: 0.2rem;
+}
+
+.controls {
   display: flex;
-  align-items: center;
-  padding: 1.5em;
+  justify-content: space-between;
 }
 
-aside {
+.note input {
   width: 100%;
 }
 
-article {
+.notes textarea {
   width: 100%;
-
-  & > * + * {
-    margin-top: 1em;
-    display: block;
-  }
-  
-  h1, blockquote {
-    font-family: 'Crete Round', serif;
-    letter-spacing: 1px;
-  }
-
-  li a {
-    display: inline-block;
-    padding: 0.2em 0.5em;
-    margin-bottom: 0.4em;
-  }
-}
-
-img {
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  section {
-    flex-wrap: wrap;
-  }
+  height: 60vh;
+  min-height: 100px;
 }
