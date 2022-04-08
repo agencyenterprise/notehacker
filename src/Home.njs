@@ -72,7 +72,7 @@ class Home extends Nullstack {
               bind={this.notes}
               disabled={this.isNoteEnabled}
               onkeydown={this.addNewNote}
-            ></Textarea>
+            />
             <Button id="btn-clipboard" class="my-2">Copy to clipboard</Button>
           </div>
         </div>
