@@ -66,7 +66,7 @@ class Home extends Nullstack {
     return (
       <section>
         <div class="wrapper">
-          <div class="controls">
+          <div class="controls pb-2">
             <Button onclick={this.confirmDialog}>Stop</Button>
             <div class="time" style="color: #000">
               {secondsToHms(this.elapsedSeconds)}
