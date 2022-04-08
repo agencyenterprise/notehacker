@@ -1,6 +1,5 @@
 import Nullstack from "nullstack";
 import "./Home.scss";
-
 import { secondsToHms } from "./services/ElapsedTimer";
 
 class Home extends Nullstack {
@@ -37,7 +36,7 @@ class Home extends Nullstack {
     page.description = `${project.name} was made with Nullstack`;
   }
 
-  render({ project }) {
+  render() {
     return (
       <section>
         <div class="wrapper">

@@ -1,7 +1,7 @@
 import Nullstack from "nullstack";
 import "./Application.scss";
-import "./styles.css";
 import Home from "./Home";
+import "./styles.css";
 
 class Application extends Nullstack {
   prepare({ page }) {
