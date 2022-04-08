@@ -1,4 +1,5 @@
 import Nullstack from "nullstack";
+import copy from 'copy-to-clipboard';
 import "./Home.scss";
 import { secondsToHms, secondsToMin } from "./services/ElapsedTimer";
 import Button from "./components/Button";
@@ -56,6 +57,10 @@ class Home extends Nullstack {
     }
   }
 
+  copyToClipboard() {
+    copy(this.notes);
+  }
+
   render() {
     return (
       <section>
@@ -73,7 +78,7 @@ class Home extends Nullstack {
               disabled={this.isNoteEnabled}
               onkeydown={this.addNewNote}
             />
-            <Button id="btn-clipboard" class="my-2">Copy to clipboard</Button>
+            <Button onclick={this.copyToClipboard} id="btn-clipboard" class="my-2">Copy to clipboard</Button>
           </div>
         </div>
 

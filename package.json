@@ -18,6 +18,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.2",
     "clsx": "^1.1.1",
+    "copy-to-clipboard": "^3.3.1",
     "nullstack-tailwind": "^0.2.2"
   }
 }
