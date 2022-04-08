@@ -6,4 +6,4 @@ yarn.lock
 .env
 dist
 .idea
-style.css
+styles.css
