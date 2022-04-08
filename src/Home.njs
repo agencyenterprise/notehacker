@@ -3,6 +3,7 @@ import "./Home.scss";
 import { secondsToHms, secondsToMin } from "./services/ElapsedTimer";
 import Button from "./components/Button";
 import Textarea from "./components/Textarea";
+import Confirm from "./components/Confirm";
 
 class Home extends Nullstack {
   elapsedSeconds = 0;
@@ -75,15 +76,8 @@ class Home extends Nullstack {
             <Button id="btn-clipboard" class="my-2">Copy to clipboard</Button>
           </div>
         </div>
-        <dialog id="confirm-dialog" class="p-6">
-          <form method="dialog">
-            <p>⚠️ Do you want stop the timer? Your notes will be deleted! ⚠️</p>
-            <menu>
-              <Button value="no" class="mr-2.5">No</Button>
-              <Button value="yes">Yes</Button>
-            </menu>
-          </form>
-        </dialog>
+
+        <Confirm/>
       </section>
     );
   }
