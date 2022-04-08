@@ -40,8 +40,12 @@ class Home extends Nullstack {
     });
   }
 
-  addNewNote() {
-    console.log('[dev] new note added')
+  addNewNote({ event }) {
+    if (event.key.toUpperCase() === "ENTER") {
+      event.preventDefault();
+      this.notes = "00m - " + this.notes + "\n";
+      console.log("Notes: ", this.notes);
+    }
   }
 
   render() {
@@ -50,11 +54,17 @@ class Home extends Nullstack {
         <div class="wrapper">
           <div class="controls">
             <Button onclick={this.confirmDialog}>Stop</Button>
-            <div class="time" style="color: #000">{secondsToHms(this.elapsedSeconds)}</div>
+            <div class="time" style="color: #000">
+              {secondsToHms(this.elapsedSeconds)}
+            </div>
             <Button onclick={this.startPause}>Play/Pause</Button>
           </div>
           <div class="notes">
-            <Textarea bind={this.notes} disabled={this.isNoteEnabled} oninput={this.addNewNote}></Textarea>
+            <Textarea
+              bind={this.notes}
+              disabled={this.isNoteEnabled}
+              onkeydown={this.addNewNote}
+            ></Textarea>
             <Button id="btn-clipboard" class="my-2">Copy to clipboard</Button>
           </div>
         </div>
