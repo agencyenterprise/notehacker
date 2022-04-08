@@ -10,8 +10,8 @@
     "tailwindcss": "^3.0.23"
   },
   "scripts": {
-    "start": "npx nullstack start",
-    "build": "npx nullstack build --mode=ssg --output=dist",
+    "start": "npm run start-tailwind & npx nullstack start",
+    "build": "npm run build-tailwind && npx nullstack build --mode=ssg --output=dist",
     "start-tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/styles.css --watch",
     "build-tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/styles.css"
   },
