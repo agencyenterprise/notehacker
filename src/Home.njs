@@ -68,7 +68,7 @@ class Home extends Nullstack {
         <div class="wrapper">
           <div class="controls pb-2">
             <Button onclick={this.confirmDialog}>Stop</Button>
-            <div class="time" style="color: #000">
+            <div class="time text-slate-700 text-3xl">
               {secondsToHms(this.elapsedSeconds)}
             </div>
             <Button onclick={this.startPause}>Play/Pause</Button>
