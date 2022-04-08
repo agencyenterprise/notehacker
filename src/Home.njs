@@ -5,7 +5,7 @@ import { secondsToHms } from "./services/ElapsedTimer";
 
 class Home extends Nullstack {
   elapsedSeconds = 0;
-  elapsedTime = "00:00:01";
+  elapsedTime = "00:00:00";
   timerId;
   notes;
 
