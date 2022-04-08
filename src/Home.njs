@@ -2,6 +2,18 @@ import Nullstack from "nullstack";
 import "./Home.scss";
 
 class Home extends Nullstack {
+  elapsedSeconds = 0;
+  elapsedTime = "00:00:01";
+  timerId;
+
+  startPause() {
+    if (!this.timerId) {
+      this.timerId = setInterval(() => ++this.elapsedSeconds, 1000);
+      return;
+    }
+    this.timerId = clearInterval(this.timerId);
+  }
+
   prepare({ project, page }) {
     page.title = `${project.name}`;
     page.description = `${project.name} was made with Nullstack`;
@@ -12,9 +24,9 @@ class Home extends Nullstack {
       <section>
         <div class="wrapper">
           <div class="controls">
-            <button id="btn-stop">Stop</button>
-            <div class="time">00:00:00</div>
-            <button id="btn-play">Play/Pause</button>
+            <button>Stop</button>
+            <div class="time">{this.elapsedSeconds}</div>
+            <button onclick={this.startPause}>Play/Pause</button>
           </div>
           <div class="note">
             <input id="input-note" type="text" required disabled />
