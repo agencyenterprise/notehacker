@@ -1,10 +1,13 @@
 import Nullstack from "nullstack";
 import "./Home.scss";
 
+import { secondsToHms } from "./services/ElapsedTimer";
+
 class Home extends Nullstack {
   elapsedSeconds = 0;
   elapsedTime = "00:00:01";
   timerId;
+  notes;
 
   startPause() {
     if (!this.timerId) {
@@ -12,6 +15,11 @@ class Home extends Nullstack {
       return;
     }
     this.timerId = clearInterval(this.timerId);
+  }
+
+  stop() {
+    this.timerId = clearInterval(this.timerId);
+    this.elapsedSeconds = 0;
   }
 
   prepare({ project, page }) {
@@ -24,15 +32,15 @@ class Home extends Nullstack {
       <section>
         <div class="wrapper">
           <div class="controls">
-            <button>Stop</button>
-            <div class="time">{this.elapsedSeconds}</div>
+            <button onclick={this.stop}>Stop</button>
+            <div class="time">{secondsToHms(this.elapsedSeconds)}</div>
             <button onclick={this.startPause}>Play/Pause</button>
           </div>
           <div class="note">
             <input id="input-note" type="text" required disabled />
           </div>
           <div class="notes">
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea></textarea>
             <button id="btn-clipboard">Copy to clipboard</button>
             <button id="btn-delete-notes">Delete notes</button>
           </div>
