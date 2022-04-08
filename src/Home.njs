@@ -7,7 +7,7 @@ class Home extends Nullstack {
   elapsedSeconds = 0;
   elapsedTime = "00:00:00";
   timerId;
-  notes;
+  notes = "";
 
   startPause() {
     if (!this.timerId) {
@@ -22,6 +22,16 @@ class Home extends Nullstack {
     this.elapsedSeconds = 0;
   }
 
+  confirmDialog() {
+    const dialog = document.querySelector("#confirm-dialog");
+    dialog.showModal();
+    dialog.addEventListener("close", () => {
+      if (dialog.returnValue === "yes") {
+        this.stop();
+      }
+    });
+  }
+
   prepare({ project, page }) {
     page.title = `${project.name}`;
     page.description = `${project.name} was made with Nullstack`;
@@ -32,7 +42,7 @@ class Home extends Nullstack {
       <section>
         <div class="wrapper">
           <div class="controls">
-            <button onclick={this.stop}>Stop</button>
+            <button onclick={this.confirmDialog}>Stop</button>
             <div class="time">{secondsToHms(this.elapsedSeconds)}</div>
             <button onclick={this.startPause}>Play/Pause</button>
           </div>
@@ -40,7 +50,7 @@ class Home extends Nullstack {
             <input id="input-note" type="text" required disabled />
           </div>
           <div class="notes">
-            <textarea></textarea>
+            <textarea bind={this.notes}></textarea>
             <button id="btn-clipboard">Copy to clipboard</button>
             <button id="btn-delete-notes">Delete notes</button>
           </div>
