@@ -1,5 +1,5 @@
 import Nullstack from "nullstack";
-import copy from 'copy-to-clipboard';
+import copy from "copy-to-clipboard";
 import "./Home.scss";
 import { secondsToHms } from "./helpers/timeHelper";
 import Button from "./components/Button";
@@ -49,10 +49,12 @@ class Home extends Nullstack {
   addNewNote({ event }) {
     if (event.key.toUpperCase() === "ENTER") {
       event.preventDefault();
-      const notes = this.notes.split('\n');
+      const notes = this.notes.split("\n");
       const lastNote = notes.pop();
-      notes.push(`${secondsToHms(this.elapsedSeconds)} - ${lastNote}\n`);
-      this.notes = notes.join('\n');
+      if (lastNote) {
+        notes.push(`${secondsToHms(this.elapsedSeconds)} - ${lastNote}\n`);
+        this.notes = notes.join("\n");
+      }
     }
   }
 
@@ -69,14 +71,18 @@ class Home extends Nullstack {
               {secondsToHms(this.elapsedSeconds)}
             </div>
             <div>
-                <Button class="mr-2" onclick={this.startPause}>
-                    {this.timerId ? <PauseIcon class="mr-1"/> : <PlayIcon class="mr-1"/>}
-                    {this.timerId ? 'Pause' : 'Play'}
-                </Button>
-                <Button disabled={!this.timerId} onclick={this.confirmDialog}>
-                    <StopIcon class="mr-1"/>
-                    Stop
-                </Button>
+              <Button class="mr-2" onclick={this.startPause}>
+                {this.timerId ? (
+                  <PauseIcon class="mr-1" />
+                ) : (
+                  <PlayIcon class="mr-1" />
+                )}
+                {this.timerId ? "Pause" : "Play"}
+              </Button>
+              <Button disabled={!this.timerId} onclick={this.confirmDialog}>
+                <StopIcon class="mr-1" />
+                Stop
+              </Button>
             </div>
           </div>
           <div class="notes">
@@ -85,13 +91,17 @@ class Home extends Nullstack {
               disabled={this.isNoteEnabled}
               onkeydown={this.addNewNote}
             />
-            <Button onclick={this.copyToClipboard} id="btn-clipboard" class="my-2 px-2 py-1 bg-indigo-400 hover:bg-indigo-500">
-                <CopyIcon class="h-4 w-4 mr-1"/>
-                Copy to clipboard
+            <Button
+              onclick={this.copyToClipboard}
+              id="btn-clipboard"
+              class="my-2 px-2 py-1 bg-indigo-400 hover:bg-indigo-500"
+            >
+              <CopyIcon class="h-4 w-4 mr-1" />
+              Copy to clipboard
             </Button>
           </div>
         </div>
-        <Confirm/>
+        <Confirm />
       </section>
     );
   }
