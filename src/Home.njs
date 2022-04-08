@@ -8,6 +8,7 @@ import Confirm from "./components/Confirm";
 import CopyIcon from "./components/CopyIcon";
 import PlayIcon from "./components/PlayIcon";
 import PauseIcon from "./components/PauseIcon";
+import StopIcon from "./components/StopIcon";
 
 class Home extends Nullstack {
   elapsedSeconds = 0;
@@ -69,7 +70,10 @@ class Home extends Nullstack {
       <section>
         <div class="wrapper">
           <div class="controls pb-2">
-            <Button onclick={this.confirmDialog}>Stop</Button>
+            <Button onclick={this.confirmDialog}>
+                <StopIcon class="mr-1"/>
+                Stop
+            </Button>
             <div class="time text-slate-700 text-3xl">
               {secondsToHms(this.elapsedSeconds)}
             </div>
