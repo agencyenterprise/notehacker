@@ -5,6 +5,7 @@ import { secondsToHms, secondsToMin } from "./services/ElapsedTimer";
 import Button from "./components/Button";
 import Textarea from "./components/Textarea";
 import Confirm from "./components/Confirm";
+import CopyIcon from "./components/CopyIcon";
 
 class Home extends Nullstack {
   elapsedSeconds = 0;
@@ -78,10 +79,12 @@ class Home extends Nullstack {
               disabled={this.isNoteEnabled}
               onkeydown={this.addNewNote}
             />
-            <Button onclick={this.copyToClipboard} id="btn-clipboard" class="my-2">Copy to clipboard</Button>
+            <Button onclick={this.copyToClipboard} id="btn-clipboard" class="my-2">
+                <CopyIcon class="mr-1"/>
+                Copy to clipboard
+            </Button>
           </div>
         </div>
-
         <Confirm/>
       </section>
     );
