@@ -1,6 +1,6 @@
 import Nullstack from "nullstack";
 import "./Home.scss";
-import { secondsToHms } from "./services/ElapsedTimer";
+import { secondsToHms, secondsToMin } from "./services/ElapsedTimer";
 import Button from "./components/Button";
 import Textarea from "./components/Textarea";
 
@@ -40,11 +40,18 @@ class Home extends Nullstack {
     });
   }
 
+  getNoteMinute() {
+    const minutes = secondsToMin(this.elapsedSeconds).toFixed(0);
+    return String(minutes).padStart(2, '0') + 'm';
+  }
+
   addNewNote({ event }) {
     if (event.key.toUpperCase() === "ENTER") {
       event.preventDefault();
-      this.notes = "00m - " + this.notes + "\n";
-      console.log("Notes: ", this.notes);
+      const notes = this.notes.split('\n');
+      const lastNote = notes.pop();
+      notes.push(`${this.getNoteMinute()} - ${lastNote}\n`);
+      this.notes = notes.join('\n');
     }
   }
 
