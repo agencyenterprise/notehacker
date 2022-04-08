@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #2d3748;
+  background-color: #f7fafc;
   color: #fff;
   font-family: 'Roboto', sans-serif;
 }
@@ -15,4 +15,8 @@ body {
 a {
   color: #ddbc72;
   margin-left: .3em;
+}
+
+input, textarea {
+  color: rgb(51 65 85) !important;
 }

@@ -1,6 +1,8 @@
 import Nullstack from "nullstack";
 import "./Home.scss";
 import { secondsToHms } from "./services/ElapsedTimer";
+import Button from "./components/Button";
+import Textarea from "./components/Textarea";
 
 class Home extends Nullstack {
   elapsedSeconds = 0;
@@ -44,12 +46,12 @@ class Home extends Nullstack {
       <section>
         <div class="wrapper">
           <div class="controls">
-            <button onclick={this.confirmDialog}>Stop</button>
+            <Button onclick={this.confirmDialog}>Stop</Button>
             <div class="time">{secondsToHms(this.elapsedSeconds)}</div>
-            <button onclick={this.startPause}>Play/Pause</button>
+            <Button onclick={this.startPause}>Play/Pause</Button>
           </div>
           <div class="notes">
-            <textarea bind={this.notes} disabled={this.isNoteEnabled} oninput={this.addNewNote}></textarea>
+            <Textarea bind={this.notes} disabled={this.isNoteEnabled} oninput={this.addNewNote}></Textarea>
             <button id="btn-clipboard">Copy to clipboard</button>
           </div>
         </div>
