@@ -79,8 +79,8 @@ class Home extends Nullstack {
               disabled={this.isNoteEnabled}
               onkeydown={this.addNewNote}
             />
-            <Button onclick={this.copyToClipboard} id="btn-clipboard" class="my-2 bg-indigo-400 hover:bg-indigo-500">
-                <CopyIcon class="mr-1"/>
+            <Button onclick={this.copyToClipboard} id="btn-clipboard" class="my-2 px-2 py-1 bg-indigo-400 hover:bg-indigo-500">
+                <CopyIcon class="h-4 w-4 mr-1"/>
                 Copy to clipboard
             </Button>
           </div>
