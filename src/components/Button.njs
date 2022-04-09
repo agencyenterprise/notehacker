@@ -3,9 +3,10 @@ import clsx from 'clsx';
 const styles = {
     base: "inline-flex items-center text-sm font-medium rounded-md shadow-sm",
     contained: {
-        base: "border border-transparent text-white",
-        primary: "bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
-        danger: "bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500",
+        base: "border border-transparent text-white focus:outline-none focus:ring-2 focus:ring-offset-2",
+        secondary: "bg-violet-500 hover:bg-violet-600 focus:ring-violet-500",
+        primary: "bg-indigo-500 hover:bg-indigo-600 focus:ring-indigo-500",
+        danger: "bg-red-500 hover:bg-red-600 focus:ring-red-500",
     },
     outlined: {
         base: "border",

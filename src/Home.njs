@@ -80,7 +80,7 @@ class Home extends Nullstack {
               {secondsToHms(this.elapsedSeconds)}
             </div>
             <div>
-              <Button class="mr-3 w-28 justify-center" onclick={this.startPause}>
+              <Button color="secondary" class="mr-3 w-28 justify-center" onclick={this.startPause}>
                 {this.timerId ? (
                   <PauseIcon class="mr-1.5" />
                 ) : (
