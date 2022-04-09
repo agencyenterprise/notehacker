@@ -3,13 +3,13 @@
  * @param elapsedSeconds - The number of seconds to convert to hours, minutes, and seconds.
  */
 export function secondsToHms(elapsedSeconds) {
-  const hours = Math.floor(elapsedSeconds / 3600)
-  const minutes = Math.floor((elapsedSeconds % 3600) / 60)
-  const seconds = Math.floor((elapsedSeconds % 3600) % 60)
+  const hours = Math.floor(elapsedSeconds / 3600);
+  const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+  const seconds = Math.floor((elapsedSeconds % 3600) % 60);
 
-  const pad = (value) => (value < 10 ? '0' + value : value)
+  const pad = (value) => (value < 10 ? "0" + value : value);
 
-  return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
+  return pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
 }
 
 /**
@@ -18,5 +18,5 @@ export function secondsToHms(elapsedSeconds) {
  * @returns The number of minutes in the given number of seconds.
  */
 export function secondsToMin(elapsedSeconds) {
-  return elapsedSeconds / 60
+  return elapsedSeconds / 60;
 }
