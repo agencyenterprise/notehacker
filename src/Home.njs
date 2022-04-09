@@ -39,6 +39,7 @@ class Home extends Nullstack {
         this.saveSnapshot();
       }, 1000);
       this.isRunning = true;
+      this.setNoteFocus();
       return;
     }
 
@@ -58,6 +59,10 @@ class Home extends Nullstack {
     this.isRunning = false;
   }
 
+  setNoteFocus() {
+    setTimeout(() => document.querySelector("textarea").focus(), 100);
+  }
+
   confirmDialog() {
     const dialog = document.querySelector("#confirm-dialog");
     window.dialogPolyfill.registerDialog(dialog);
@@ -66,6 +71,7 @@ class Home extends Nullstack {
       if (dialog.returnValue === "yes") {
         this.stop();
       }
+      this.setNoteFocus();
     });
   }
 
