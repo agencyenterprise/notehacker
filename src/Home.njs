@@ -20,15 +20,14 @@ class Home extends Nullstack {
   snackBar = false;
 
   async hydrate() {
-    const previousSnapshot = localStorage.getItem("snap-notes");
-    const { running = false } = JSON.parse(previousSnapshot) || {};
-
-    if (previousSnapshot && !previousSnapshot.includes('"elapsedSeconds":0')) {
-      const snapshot = JSON.parse(previousSnapshot);
+    const savedSnapshot = localStorage.getItem("snap-notes");
+    const snapshot = JSON.parse(savedSnapshot) || {};
+    if (snapshot?.elapsedSeconds > 0) {
+      const snapshot = JSON.parse(savedSnapshot);
       this.elapsedSeconds = snapshot.elapsedSeconds;
       this.notes = snapshot.notes;
-      if(running) {
-          this.startPause();
+      if (snapshot.isRunning) {
+        this.startPause();
       }
     }
   }
@@ -84,7 +83,7 @@ class Home extends Nullstack {
       "snap-notes",
       JSON.stringify({
         elapsedSeconds,
-        running: !this.isNoteEnabled,
+        isRunning: !this.isNoteEnabled,
         notes,
       })
     );
