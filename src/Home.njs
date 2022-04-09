@@ -55,6 +55,7 @@ class Home extends Nullstack {
 
   confirmDialog() {
     const dialog = document.querySelector("#confirm-dialog");
+    window.dialogPolyfill.registerDialog(dialog);
     dialog.showModal();
     dialog.addEventListener("close", () => {
       if (dialog.returnValue === "yes") {
