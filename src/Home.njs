@@ -108,12 +108,12 @@ class Home extends Nullstack {
     return (
       <section>
         <div class="wrapper">
-          <div class="controls pt-4 pb-6">
+          <div class="md:flex md:justify-between items-center pt-4 pb-6">
             <img class="w-48" src="/notehack.svg" />
-            <div class="time text-slate-700 text-3xl">
+            <div class="text-center py-9 md:text-left time text-slate-700 text-3xl">
               {secondsToHms(this.elapsedSeconds)}
             </div>
-            <div>
+            <div class="flex justify-center md:block">
               <Button
                 color="secondary"
                 class="mr-3 w-28 justify-center"
