@@ -74,7 +74,7 @@ class Home extends Nullstack {
       <section>
         <div class="wrapper">
           <div class="controls pt-4 pb-6">
-            <img class="w-40" src="/notehack.svg"/>
+            <img class="w-48" src="/notehack.svg"/>
             <div class="time text-slate-700 text-3xl">
               {secondsToHms(this.elapsedSeconds)}
             </div>
