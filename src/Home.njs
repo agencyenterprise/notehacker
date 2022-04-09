@@ -78,16 +78,16 @@ class Home extends Nullstack {
               {secondsToHms(this.elapsedSeconds)}
             </div>
             <div>
-              <Button class="mr-2" onclick={this.startPause}>
+              <Button class="mr-2 w-28 justify-center" onclick={this.startPause}>
                 {this.timerId ? (
-                  <PauseIcon class="mr-1" />
+                  <PauseIcon class="mr-1.5" />
                 ) : (
-                  <PlayIcon class="mr-1" />
+                  <PlayIcon class="mr-1.5" />
                 )}
                 {this.timerId ? "Pause" : "Play"}
               </Button>
-              <Button disabled={!this.timerId} onclick={this.confirmDialog}>
-                <StopIcon class="mr-1" />
+              <Button variant="outlined" color="danger" disabled={!this.timerId} onclick={this.confirmDialog}>
+                <StopIcon class="mr-1.5" />
                 Stop
               </Button>
             </div>
@@ -98,14 +98,17 @@ class Home extends Nullstack {
               disabled={this.isNoteEnabled}
               onkeydown={this.addNewNote}
             />
-            <Button
-              onclick={this.copyToClipboard}
-              id="btn-clipboard"
-              class="my-2 px-2 py-1 bg-indigo-400 hover:bg-indigo-500"
-            >
-              <CopyIcon class="h-4 w-4 mr-1" />
-              Copy to clipboard
-            </Button>
+            <div class="flex justify-end">
+                <Button
+                  variant="outlined" color="default"
+                  onclick={this.copyToClipboard}
+                  id="btn-clipboard"
+                  class="my-2 px-2 py-1 -mt-10 mr-2"
+                >
+                  <CopyIcon class="h-4 w-4 mr-1" />
+                  Copy to clipboard
+                </Button>
+            </div>
           </div>
         </div>
         <Confirm />

@@ -2,12 +2,12 @@ import Button from "./Button";
 
 export default function Confirm() {
   return (
-    <dialog id="confirm-dialog" class="p-6">
+    <dialog id="confirm-dialog" class="p-6 mx-auto mt-[10%]">
       <form method="dialog">
-        <p>⚠️ Do you want stop the timer? Your notes will be deleted! ⚠️</p>
-        <menu>
-          <Button value="no" class="mr-2.5">No</Button>
-          <Button value="yes">Yes</Button>
+        <p class="mb-4 text-lg">⚠️ Do you want stop the timer?️</p>
+        <menu class="flex justify-end">
+            <Button variant="outlined" color="default" class="mr-2.5" value="no">No</Button>
+            <Button color="danger" value="yes">Yes</Button>
         </menu>
       </form>
     </dialog>
