@@ -28,6 +28,7 @@ class Home extends Nullstack {
 
   stop() {
     this.elapsedSeconds = 0;
+    this.notes = "";
     this.disabledNote();
   }
 
