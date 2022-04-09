@@ -9,6 +9,7 @@ import CopyIcon from "./components/CopyIcon";
 import PlayIcon from "./components/PlayIcon";
 import PauseIcon from "./components/PauseIcon";
 import StopIcon from "./components/StopIcon";
+import CircleCheckIcon from "./components/CircleCheckIcon";
 
 class Home extends Nullstack {
   elapsedSeconds = 0;
@@ -16,6 +17,7 @@ class Home extends Nullstack {
   timerId;
   notes = "";
   isNoteEnabled = true;
+  snackBar = false;
 
   startPause() {
     if (!this.timerId) {
@@ -68,6 +70,10 @@ class Home extends Nullstack {
 
   copyToClipboard() {
     copy(this.notes);
+    this.snackBar = true;
+    setTimeout(() => {
+        this.snackBar = false;
+    }, 3000);
   }
 
   render() {
@@ -118,6 +124,12 @@ class Home extends Nullstack {
           </div>
         </div>
         <Confirm />
+        {this.snackBar && (
+            <div class="bg-green-500 py-2 px-4 max-w-fit rounded-md mx-auto drop-shadow-md">
+                <CircleCheckIcon class="mr-2"/>
+                Successfully copied to clipboard!
+            </div>
+        )}
       </section>
     );
   }
