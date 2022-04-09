@@ -84,7 +84,7 @@ class Home extends Nullstack {
                 ) : (
                   <PlayIcon class="mr-1.5" />
                 )}
-                {this.timerId ? "Pause" : "Play"}
+                {this.timerId ? "Pause" : "Start"}
               </Button>
               <Button variant="outlined" color="danger" disabled={!this.timerId} onclick={this.confirmDialog}>
                 <StopIcon class="mr-1.5" />
