@@ -101,10 +101,12 @@ class Home extends Nullstack {
             <div class="flex justify-end">
                 {this.notes && (
                     <Button
-                      variant="outlined" color="default"
+                      size="small"
+                      variant="outlined"
+                      color="default"
                       onclick={this.copyToClipboard}
                       id="btn-clipboard"
-                      class="my-2 px-2 py-1 -mt-10 mr-2 z-10"
+                      class="my-2 -mt-10 mr-2 z-10"
                     >
                       <CopyIcon class="h-4 w-4 mr-1" />
                       Copy to clipboard
