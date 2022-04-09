@@ -16,7 +16,7 @@ class Home extends Nullstack {
   elapsedTime = "00:00:00";
   timerId;
   notes = "";
-  isNoteEnabled = true;
+  isRunning = false;
   snackBar = false;
 
   async hydrate() {
@@ -38,7 +38,7 @@ class Home extends Nullstack {
         ++this.elapsedSeconds;
         this.saveSnapshot();
       }, 1000);
-      this.isNoteEnabled = false;
+      this.isRunning = true;
       return;
     }
 
@@ -55,7 +55,7 @@ class Home extends Nullstack {
 
   disabledNote() {
     this.timerId = clearInterval(this.timerId);
-    this.isNoteEnabled = true;
+    this.isRunning = false;
   }
 
   confirmDialog() {
@@ -83,7 +83,7 @@ class Home extends Nullstack {
       "snap-notes",
       JSON.stringify({
         elapsedSeconds,
-        isRunning: !this.isNoteEnabled,
+        isRunning: this.isRunning,
         notes,
       })
     );
@@ -146,7 +146,7 @@ class Home extends Nullstack {
           <div class="notes">
             <Textarea
               bind={this.notes}
-              disabled={this.isNoteEnabled}
+              disabled={!this.isRunning}
               onkeydown={this.addNewNote}
             />
             <div class="flex justify-end">
