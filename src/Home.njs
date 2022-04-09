@@ -21,11 +21,15 @@ class Home extends Nullstack {
 
   async hydrate() {
     const previousSnapshot = localStorage.getItem("snap-notes");
+    const { running = false } = JSON.parse(previousSnapshot) || {};
+
     if (previousSnapshot && !previousSnapshot.includes('"elapsedSeconds":0')) {
       const snapshot = JSON.parse(previousSnapshot);
       this.elapsedSeconds = snapshot.elapsedSeconds;
       this.notes = snapshot.notes;
-      this.startPause();
+      if(running) {
+          this.startPause();
+      }
     }
   }
 
@@ -38,14 +42,16 @@ class Home extends Nullstack {
       this.isNoteEnabled = false;
       return;
     }
+
     this.disabledNote();
+    this.saveSnapshot();
   }
 
   stop() {
     this.elapsedSeconds = 0;
     this.notes = "";
-    this.saveSnapshot();
     this.disabledNote();
+    this.saveSnapshot();
   }
 
   disabledNote() {
@@ -78,6 +84,7 @@ class Home extends Nullstack {
       "snap-notes",
       JSON.stringify({
         elapsedSeconds,
+        running: !this.isNoteEnabled,
         notes,
       })
     );
