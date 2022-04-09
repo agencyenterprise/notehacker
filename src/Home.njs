@@ -99,15 +99,17 @@ class Home extends Nullstack {
               onkeydown={this.addNewNote}
             />
             <div class="flex justify-end">
-                <Button
-                  variant="outlined" color="default"
-                  onclick={this.copyToClipboard}
-                  id="btn-clipboard"
-                  class="my-2 px-2 py-1 -mt-10 mr-2"
-                >
-                  <CopyIcon class="h-4 w-4 mr-1" />
-                  Copy to clipboard
-                </Button>
+                {this.notes && (
+                    <Button
+                      variant="outlined" color="default"
+                      onclick={this.copyToClipboard}
+                      id="btn-clipboard"
+                      class="my-2 px-2 py-1 -mt-10 mr-2 z-10"
+                    >
+                      <CopyIcon class="h-4 w-4 mr-1" />
+                      Copy to clipboard
+                    </Button>
+                )}
             </div>
           </div>
         </div>
