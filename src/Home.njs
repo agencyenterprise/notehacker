@@ -73,12 +73,13 @@ class Home extends Nullstack {
     return (
       <section>
         <div class="wrapper">
-          <div class="controls pb-2">
+          <div class="controls pt-4 pb-6">
+            <img class="w-40" src="/notehack.svg"/>
             <div class="time text-slate-700 text-3xl">
               {secondsToHms(this.elapsedSeconds)}
             </div>
             <div>
-              <Button class="mr-2 w-28 justify-center" onclick={this.startPause}>
+              <Button class="mr-3 w-28 justify-center" onclick={this.startPause}>
                 {this.timerId ? (
                   <PauseIcon class="mr-1.5" />
                 ) : (
