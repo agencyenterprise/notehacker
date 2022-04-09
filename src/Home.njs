@@ -46,12 +46,19 @@ class Home extends Nullstack {
     });
   }
 
+  isValidEntry({ lastNote }) {
+    if (lastNote && !/^\d{2}\:\d{2}/.test(lastNote)) {
+      return true;
+    }
+    return false;
+  }
+
   addNewNote({ event }) {
     if (event.key.toUpperCase() === "ENTER") {
       event.preventDefault();
       const notes = this.notes.split("\n");
       const lastNote = notes.pop();
-      if (lastNote) {
+      if (this.isValidEntry({ lastNote })) {
         notes.push(`${secondsToHms(this.elapsedSeconds)} - ${lastNote}\n`);
         this.notes = notes.join("\n");
       }
