@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 const styles = {
-    base: "inline-flex items-center text-sm font-medium rounded-md shadow-sm",
+    base: "inline-flex items-center text-sm font-medium rounded-md shadow-sm disabled:opacity-30 disabled:bg-inherit",
     contained: {
         base: "border border-transparent text-white focus:outline-none focus:ring-2 focus:ring-offset-2",
         secondary: "bg-violet-500 hover:bg-violet-600 focus:ring-violet-500",
