@@ -19,9 +19,22 @@ class Home extends Nullstack {
   isNoteEnabled = true;
   snackBar = false;
 
+  async hydrate() {
+    const previousSnapshot = localStorage.getItem("snap-notes");
+    if (previousSnapshot && !previousSnapshot.includes('"elapsedSeconds":0')) {
+      const snapshot = JSON.parse(previousSnapshot);
+      this.elapsedSeconds = snapshot.elapsedSeconds;
+      this.notes = snapshot.notes;
+      this.startPause();
+    }
+  }
+
   startPause() {
     if (!this.timerId) {
-      this.timerId = setInterval(() => ++this.elapsedSeconds, 1000);
+      this.timerId = setInterval(() => {
+        ++this.elapsedSeconds;
+        this.saveSnapshot();
+      }, 1000);
       this.isNoteEnabled = false;
       return;
     }
@@ -31,6 +44,7 @@ class Home extends Nullstack {
   stop() {
     this.elapsedSeconds = 0;
     this.notes = "";
+    this.saveSnapshot();
     this.disabledNote();
   }
 
@@ -56,6 +70,18 @@ class Home extends Nullstack {
     return false;
   }
 
+  saveSnapshot() {
+    const elapsedSeconds = this.elapsedSeconds;
+    const notes = this.notes;
+    localStorage.setItem(
+      "snap-notes",
+      JSON.stringify({
+        elapsedSeconds,
+        notes,
+      })
+    );
+  }
+
   addNewNote({ event }) {
     if (event.key.toUpperCase() === "ENTER") {
       event.preventDefault();
@@ -64,6 +90,7 @@ class Home extends Nullstack {
       if (this.isValidEntry({ lastNote })) {
         notes.push(`${secondsToHms(this.elapsedSeconds)} - ${lastNote}\n`);
         this.notes = notes.join("\n");
+        this.saveSnapshot();
       }
     }
   }
@@ -72,7 +99,7 @@ class Home extends Nullstack {
     copy(this.notes);
     this.snackBar = true;
     setTimeout(() => {
-        this.snackBar = false;
+      this.snackBar = false;
     }, 3000);
   }
 
@@ -81,12 +108,16 @@ class Home extends Nullstack {
       <section>
         <div class="wrapper">
           <div class="controls pt-4 pb-6">
-            <img class="w-48" src="/notehack.svg"/>
+            <img class="w-48" src="/notehack.svg" />
             <div class="time text-slate-700 text-3xl">
               {secondsToHms(this.elapsedSeconds)}
             </div>
             <div>
-              <Button color="secondary" class="mr-3 w-28 justify-center" onclick={this.startPause}>
+              <Button
+                color="secondary"
+                class="mr-3 w-28 justify-center"
+                onclick={this.startPause}
+              >
                 {this.timerId ? (
                   <PauseIcon class="mr-1.5" />
                 ) : (
@@ -94,7 +125,12 @@ class Home extends Nullstack {
                 )}
                 {this.timerId ? "Pause" : "Start"}
               </Button>
-              <Button variant="outlined" color="danger" disabled={!this.timerId} onclick={this.confirmDialog}>
+              <Button
+                variant="outlined"
+                color="danger"
+                disabled={!this.timerId}
+                onclick={this.confirmDialog}
+              >
                 <StopIcon class="mr-1.5" />
                 Stop
               </Button>
@@ -107,28 +143,28 @@ class Home extends Nullstack {
               onkeydown={this.addNewNote}
             />
             <div class="flex justify-end">
-                {this.notes && (
-                    <Button
-                      size="small"
-                      variant="outlined"
-                      color="default"
-                      onclick={this.copyToClipboard}
-                      id="btn-clipboard"
-                      class="my-2 -mt-10 mr-2 z-10"
-                    >
-                      <CopyIcon class="h-4 w-4 mr-1" />
-                      Copy to clipboard
-                    </Button>
-                )}
+              {this.notes && (
+                <Button
+                  size="small"
+                  variant="outlined"
+                  color="default"
+                  onclick={this.copyToClipboard}
+                  id="btn-clipboard"
+                  class="my-2 -mt-10 mr-2 z-10"
+                >
+                  <CopyIcon class="h-4 w-4 mr-1" />
+                  Copy to clipboard
+                </Button>
+              )}
             </div>
           </div>
         </div>
         <Confirm />
         {this.snackBar && (
-            <div class="bg-green-500 py-1.5 px-3 max-w-fit rounded-md mx-auto drop-shadow-md text-sm">
-                <CircleCheckIcon class="mr-2"/>
-                Successfully copied to clipboard!
-            </div>
+          <div class="bg-green-500 py-1.5 px-3 max-w-fit rounded-md mx-auto drop-shadow-md text-sm">
+            <CircleCheckIcon class="mr-2" />
+            Successfully copied to clipboard!
+          </div>
         )}
       </section>
     );
