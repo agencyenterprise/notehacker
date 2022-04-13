@@ -23,7 +23,6 @@ class Home extends Nullstack {
     const savedSnapshot = localStorage.getItem("snap-notes");
     const snapshot = JSON.parse(savedSnapshot) || {};
     if (snapshot?.elapsedSeconds > 0) {
-      const snapshot = JSON.parse(savedSnapshot);
       this.elapsedSeconds = snapshot.elapsedSeconds;
       this.notes = snapshot.notes;
       if (snapshot.isRunning) {
