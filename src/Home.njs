@@ -61,7 +61,11 @@ class Home extends Nullstack {
   }
 
   setNoteFocus() {
-    setTimeout(() => document.querySelector("textarea").focus(), 100);
+    const textarea = document.querySelector("textarea");
+    setTimeout(() => {
+      textarea.focus();
+      textarea.selectionStart = textarea.value.length;
+    }, 100);
   }
 
   confirmDialog() {
@@ -79,6 +83,10 @@ class Home extends Nullstack {
   isValidEntry({ lastNote }) {
     if (lastNote && !/^\d{2}\:\d{2}/.test(lastNote)) {
       return true;
+    }
+    if (/^\d{2}\:\d{2}/.test(lastNote)) {
+      this.notes += "\n";
+      this.setNoteFocus();
     }
     return false;
   }
