@@ -7,7 +7,7 @@ class Application extends Nullstack {
   prepare({ project, page }) {
     page.locale = "en-US";
     page.title = `${project.name}`;
-    page.description = `${project.name} for the ones that lives in the matrix`;
+    page.description = `${project.name} for those who live in the matrix`;
   }
 
   renderHead() {
