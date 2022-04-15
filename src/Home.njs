@@ -86,8 +86,8 @@ class Home extends Nullstack {
     }
     if (/^\d{2}\:\d{2}/.test(lastNote)) {
       this.notes += "\n";
-      this.setNoteFocus();
     }
+    this.setNoteFocus();
     return false;
   }
 
