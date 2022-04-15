@@ -18,9 +18,10 @@ class Home extends Nullstack {
   notes = "";
   isRunning = false;
   snackBar = false;
+  LS_KEY = "snap-notes";
 
   async hydrate() {
-    const savedSnapshot = localStorage.getItem("snap-notes");
+    const savedSnapshot = localStorage.getItem(this.LS_KEY);
     const snapshot = JSON.parse(savedSnapshot) || {};
     if (snapshot?.elapsedSeconds > 0) {
       this.elapsedSeconds = snapshot.elapsedSeconds;
@@ -85,7 +86,7 @@ class Home extends Nullstack {
     const elapsedSeconds = this.elapsedSeconds;
     const notes = this.notes;
     localStorage.setItem(
-      "snap-notes",
+      this.LS_KEY,
       JSON.stringify({
         elapsedSeconds,
         isRunning: this.isRunning,
