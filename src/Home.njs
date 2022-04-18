@@ -81,10 +81,11 @@ class Home extends Nullstack {
   }
 
   isValidEntry({ lastNote }) {
-    if (lastNote && !/^\d{2}\:\d{2}/.test(lastNote)) {
+    const rePattern = /^\d{2}\:\d{2}/;
+    if (lastNote && !rePattern.test(lastNote)) {
       return true;
     }
-    if (/^\d{2}\:\d{2}/.test(lastNote)) {
+    if (rePattern.test(lastNote)) {
       this.notes += "\n";
     }
     this.setNoteFocus();
