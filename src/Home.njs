@@ -157,6 +157,33 @@ class Home extends Nullstack {
     );
   }
 
+  renderNotes() {
+    return (
+      <>
+        <Textarea
+          bind={this.notes}
+          disabled={!this.isRunning}
+          onkeydown={this.addNewNote}
+        />
+        <div class="flex justify-end">
+          {this.notes && (
+            <Button
+              size="small"
+              variant="outlined"
+              color="default"
+              onclick={this.copyToClipboard}
+              id="btn-clipboard"
+              class="my-2 -mt-10 mr-2 z-10"
+            >
+              <CopyIcon class="h-4 w-4 mr-1" />
+              Copy to clipboard
+            </Button>
+          )}
+        </div>
+      </>
+    );
+  }
+
   render() {
     return (
       <section>
@@ -172,26 +199,7 @@ class Home extends Nullstack {
             </div>
           </div>
           <div class="notes">
-            <Textarea
-              bind={this.notes}
-              disabled={!this.isRunning}
-              onkeydown={this.addNewNote}
-            />
-            <div class="flex justify-end">
-              {this.notes && (
-                <Button
-                  size="small"
-                  variant="outlined"
-                  color="default"
-                  onclick={this.copyToClipboard}
-                  id="btn-clipboard"
-                  class="my-2 -mt-10 mr-2 z-10"
-                >
-                  <CopyIcon class="h-4 w-4 mr-1" />
-                  Copy to clipboard
-                </Button>
-              )}
-            </div>
+           <Notes />
           </div>
         </div>
         <Confirm />
