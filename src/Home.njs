@@ -126,6 +126,37 @@ class Home extends Nullstack {
     }, 3000);
   }
 
+  renderStartButton() {
+    return (
+      <Button
+        color="secondary"
+        class="mr-3 w-28 justify-center"
+        onclick={this.startPause}
+      >
+        {this.timerId ? (
+          <PauseIcon class="mr-1.5" />
+        ) : (
+          <PlayIcon class="mr-1.5" />
+        )}
+        {this.timerId ? "Pause" : "Start"}
+      </Button>
+    );
+  }
+
+  renderStopButton() {
+    return (
+      <Button
+        variant="outlined"
+        color="danger"
+        disabled={!this.timerId}
+        onclick={this.confirmDialog}
+      >
+        <StopIcon class="mr-1.5" />
+        Stop
+      </Button>
+    );
+  }
+
   render() {
     return (
       <section>
@@ -136,27 +167,8 @@ class Home extends Nullstack {
               {secondsToHms(this.elapsedSeconds)}
             </div>
             <div class="flex justify-center md:block">
-              <Button
-                color="secondary"
-                class="mr-3 w-28 justify-center"
-                onclick={this.startPause}
-              >
-                {this.timerId ? (
-                  <PauseIcon class="mr-1.5" />
-                ) : (
-                  <PlayIcon class="mr-1.5" />
-                )}
-                {this.timerId ? "Pause" : "Start"}
-              </Button>
-              <Button
-                variant="outlined"
-                color="danger"
-                disabled={!this.timerId}
-                onclick={this.confirmDialog}
-              >
-                <StopIcon class="mr-1.5" />
-                Stop
-              </Button>
+              <StartButton />
+              <StopButton />
             </div>
           </div>
           <div class="notes">
