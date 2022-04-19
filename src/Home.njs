@@ -184,6 +184,17 @@ class Home extends Nullstack {
     );
   }
 
+  renderSnackbar() {
+    return (
+      this.snackBar && (
+        <div class="bg-green-500 py-1.5 px-3 max-w-fit rounded-md mx-auto drop-shadow-md text-sm">
+          <CircleCheckIcon class="mr-2" />
+          Successfully copied to clipboard!
+        </div>
+      )
+    );
+  }
+
   render() {
     return (
       <section>
@@ -199,16 +210,11 @@ class Home extends Nullstack {
             </div>
           </div>
           <div class="notes">
-           <Notes />
+            <Notes />
           </div>
         </div>
         <Confirm />
-        {this.snackBar && (
-          <div class="bg-green-500 py-1.5 px-3 max-w-fit rounded-md mx-auto drop-shadow-md text-sm">
-            <CircleCheckIcon class="mr-2" />
-            Successfully copied to clipboard!
-          </div>
-        )}
+        <Snackbar />
       </section>
     );
   }
