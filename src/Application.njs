@@ -1,5 +1,5 @@
 import Nullstack from "nullstack";
-import Home from "./Home";
+import Home from "./Note/Home";
 
 import "./Application.scss";
 import "./styles.css";

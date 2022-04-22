@@ -1,15 +1,15 @@
 import Nullstack from "nullstack";
 import copy from "copy-to-clipboard";
-import { secondsToHms } from "./helpers/timeHelper";
-import Button from "./components/Button";
-import Textarea from "./components/Textarea";
-import Confirm from "./components/Confirm";
-import CopyIcon from "./components/CopyIcon";
-import PlayIcon from "./components/PlayIcon";
-import PauseIcon from "./components/PauseIcon";
-import StopIcon from "./components/StopIcon";
-import CircleCheckIcon from "./components/CircleCheckIcon";
-import Footer from "./layout/Footer";
+import { secondsToHms } from "../helpers/timeHelper";
+import Button from "../components/Button";
+import Textarea from "../components/Textarea";
+import Confirm from "../components/Confirm";
+import CopyIcon from "../components/CopyIcon";
+import PlayIcon from "../components/PlayIcon";
+import PauseIcon from "../components/PauseIcon";
+import StopIcon from "../components/StopIcon";
+import CircleCheckIcon from "../components/CircleCheckIcon";
+import Footer from "../layout/Footer";
 
 import "./Home.scss";
 
