@@ -9,6 +9,7 @@ import PlayIcon from "./components/PlayIcon";
 import PauseIcon from "./components/PauseIcon";
 import StopIcon from "./components/StopIcon";
 import CircleCheckIcon from "./components/CircleCheckIcon";
+import Footer from "./layout/Footer";
 
 import "./Home.scss";
 
@@ -197,28 +198,28 @@ class Home extends Nullstack {
 
   render() {
     return (
-      <section>
-        <div class="wrapper">
-          <div class="md:flex md:justify-between items-center pt-4 pb-6">
-            <img class="w-36 md:w-48 mx-auto md:mx-0" src="/notehack.svg" />
-            <div class="text-center py-9 md:text-left time text-slate-700 text-3xl">
-              {secondsToHms(this.elapsedSeconds)}
+      <>
+        <section>
+          <div class="wrapper">
+            <div class="md:flex md:justify-between items-center pt-4 pb-6">
+              <img class="w-36 md:w-48 mx-auto md:mx-0" src="/notehack.svg" />
+              <div class="text-center py-9 md:text-left time text-slate-700 text-3xl">
+                {secondsToHms(this.elapsedSeconds)}
+              </div>
+              <div class="flex justify-center md:block">
+                <StartButton />
+                <StopButton />
+              </div>
             </div>
-            <div class="flex justify-center md:block">
-              <StartButton />
-              <StopButton />
+            <div class="notes">
+              <Notes />
             </div>
           </div>
-          <div class="notes">
-            <Notes />
-          </div>
-        </div>
-        <Confirm />
-        <Snackbar />
-        <p class="text-center text-black">
-          Made with ❤️ and<a href="https://nullstack.app/" class="text-blue-900">Nullstack</a>
-        </p>
-      </section>
+          <Confirm />
+          <Snackbar />
+        </section>
+        <Footer />
+      </>
     );
   }
 }
