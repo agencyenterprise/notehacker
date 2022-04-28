@@ -6,5 +6,5 @@ export default function Footer() {
         Nullstack
       </a>
     </p>
-  );
+  )
 }
