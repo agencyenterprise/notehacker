@@ -174,7 +174,7 @@ class Home extends Nullstack {
               color="default"
               onclick={this.copyToClipboard}
               id="btn-clipboard"
-              class="my-2 -mt-10 mr-2 z-10"
+              class="my-2 z-10"
             >
               <CopyIcon class="h-4 w-4 mr-1" />
               Copy to clipboard
