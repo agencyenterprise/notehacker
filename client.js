@@ -1,14 +1,14 @@
-import Nullstack from 'nullstack';
-import Application from './src/Application';
-import dialogPolyfill from 'dialog-polyfill';
-import "dialog-polyfill/dialog-polyfill.css";
+import Nullstack from 'nullstack'
+import Application from './src/Application'
+import dialogPolyfill from 'dialog-polyfill'
+import 'dialog-polyfill/dialog-polyfill.css'
 
-const context = Nullstack.start(Application);
+const context = Nullstack.start(Application)
 
 context.start = async function start() {
   // https://nullstack.app/application-startup
 }
 
-window.dialogPolyfill = dialogPolyfill;
+window.dialogPolyfill = dialogPolyfill
 
-export default context;
+export default context

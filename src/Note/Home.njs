@@ -1,35 +1,35 @@
-import Nullstack from "nullstack";
-import copy from "copy-to-clipboard";
-import { secondsToHms } from "../helpers/timeHelper";
-import Button from "../components/Button";
-import Textarea from "../components/Textarea";
-import Confirm from "../components/Confirm";
-import CopyIcon from "../components/CopyIcon";
-import PlayIcon from "../components/PlayIcon";
-import PauseIcon from "../components/PauseIcon";
-import StopIcon from "../components/StopIcon";
-import CircleCheckIcon from "../components/CircleCheckIcon";
-import Footer from "../layout/Footer";
+import Nullstack from 'nullstack'
+import copy from 'copy-to-clipboard'
+import { secondsToHms } from '../helpers/timeHelper'
+import Button from '../components/Button'
+import Textarea from '../components/Textarea'
+import Confirm from '../components/Confirm'
+import CopyIcon from '../components/CopyIcon'
+import PlayIcon from '../components/PlayIcon'
+import PauseIcon from '../components/PauseIcon'
+import StopIcon from '../components/StopIcon'
+import CircleCheckIcon from '../components/CircleCheckIcon'
+import Footer from '../layout/Footer'
 
-import "./Home.scss";
+import './Home.scss'
 
 class Home extends Nullstack {
-  elapsedSeconds = 0;
-  elapsedTime = "00:00:00";
-  timerId;
-  notes = "";
-  isRunning = false;
-  snackBar = false;
-  LS_KEY = "snap-notes";
+  elapsedSeconds = 0
+  elapsedTime = '00:00:00'
+  timerId
+  notes = ''
+  isRunning = false
+  snackBar = false
+  LS_KEY = 'snap-notes'
 
   async hydrate() {
-    const savedSnapshot = localStorage.getItem(this.LS_KEY);
-    const snapshot = JSON.parse(savedSnapshot) || {};
+    const savedSnapshot = localStorage.getItem(this.LS_KEY)
+    const snapshot = JSON.parse(savedSnapshot) || {}
     if (snapshot?.elapsedSeconds > 0) {
-      this.elapsedSeconds = snapshot.elapsedSeconds;
-      this.notes = snapshot.notes;
+      this.elapsedSeconds = snapshot.elapsedSeconds
+      this.notes = snapshot.notes
       if (snapshot.isRunning) {
-        this.startPause();
+        this.startPause()
       }
     }
   }
@@ -37,65 +37,65 @@ class Home extends Nullstack {
   startPause() {
     if (!this.timerId) {
       this.timerId = setInterval(() => {
-        ++this.elapsedSeconds;
-        this.saveSnapshot();
-      }, 1000);
-      this.isRunning = true;
-      this.setNoteFocus();
-      return;
+        ++this.elapsedSeconds
+        this.saveSnapshot()
+      }, 1000)
+      this.isRunning = true
+      this.setNoteFocus()
+      return
     }
 
-    this.disabledNote();
-    this.saveSnapshot();
+    this.disabledNote()
+    this.saveSnapshot()
   }
 
   stop() {
-    this.elapsedSeconds = 0;
-    this.notes = "";
-    this.disabledNote();
-    this.saveSnapshot();
+    this.elapsedSeconds = 0
+    this.notes = ''
+    this.disabledNote()
+    this.saveSnapshot()
   }
 
   disabledNote() {
-    this.timerId = clearInterval(this.timerId);
-    this.isRunning = false;
+    this.timerId = clearInterval(this.timerId)
+    this.isRunning = false
   }
 
   setNoteFocus() {
-    const textarea = document.querySelector("textarea");
+    const textarea = document.querySelector('textarea')
     setTimeout(() => {
-      textarea.focus();
-      textarea.selectionStart = textarea.value.length;
-    }, 100);
+      textarea.focus()
+      textarea.selectionStart = textarea.value.length
+    }, 100)
   }
 
   confirmDialog() {
-    const dialog = document.querySelector("#confirm-dialog");
-    window.dialogPolyfill.registerDialog(dialog);
-    dialog.showModal();
-    dialog.addEventListener("close", () => {
-      if (dialog.returnValue === "yes") {
-        this.stop();
+    const dialog = document.querySelector('#confirm-dialog')
+    window.dialogPolyfill.registerDialog(dialog)
+    dialog.showModal()
+    dialog.addEventListener('close', () => {
+      if (dialog.returnValue === 'yes') {
+        this.stop()
       }
-      this.setNoteFocus();
-    });
+      this.setNoteFocus()
+    })
   }
 
   isValidEntry({ lastNote }) {
-    const rePattern = /^\d{2}\:\d{2}/;
+    const rePattern = /^\d{2}\:\d{2}/
     if (lastNote && !rePattern.test(lastNote)) {
-      return true;
+      return true
     }
     if (rePattern.test(lastNote)) {
-      this.notes += "\n";
+      this.notes += '\n'
     }
-    this.setNoteFocus();
-    return false;
+    this.setNoteFocus()
+    return false
   }
 
   saveSnapshot() {
-    const elapsedSeconds = this.elapsedSeconds;
-    const notes = this.notes;
+    const elapsedSeconds = this.elapsedSeconds
+    const notes = this.notes
     localStorage.setItem(
       this.LS_KEY,
       JSON.stringify({
@@ -103,28 +103,28 @@ class Home extends Nullstack {
         isRunning: this.isRunning,
         notes,
       })
-    );
+    )
   }
 
   addNewNote({ event }) {
-    if (event.key.toUpperCase() === "ENTER") {
-      event.preventDefault();
-      const notes = this.notes.split("\n");
-      const lastNote = notes.pop();
+    if (event.key.toUpperCase() === 'ENTER') {
+      event.preventDefault()
+      const notes = this.notes.split('\n')
+      const lastNote = notes.pop()
       if (this.isValidEntry({ lastNote })) {
-        notes.push(`${secondsToHms(this.elapsedSeconds)} - ${lastNote}\n`);
-        this.notes = notes.join("\n");
-        this.saveSnapshot();
+        notes.push(`${secondsToHms(this.elapsedSeconds)} - ${lastNote}\n`)
+        this.notes = notes.join('\n')
+        this.saveSnapshot()
       }
     }
   }
 
   copyToClipboard() {
-    copy(this.notes);
-    this.snackBar = true;
+    copy(this.notes)
+    this.snackBar = true
     setTimeout(() => {
-      this.snackBar = false;
-    }, 3000);
+      this.snackBar = false
+    }, 3000)
   }
 
   renderStartButton() {
@@ -139,9 +139,9 @@ class Home extends Nullstack {
         ) : (
           <PlayIcon class="mr-1.5" />
         )}
-        {this.timerId ? "Pause" : "Start"}
+        {this.timerId ? 'Pause' : 'Start'}
       </Button>
-    );
+    )
   }
 
   renderStopButton() {
@@ -155,7 +155,7 @@ class Home extends Nullstack {
         <StopIcon class="mr-1.5" />
         Stop
       </Button>
-    );
+    )
   }
 
   renderNotes() {
@@ -182,7 +182,7 @@ class Home extends Nullstack {
           )}
         </div>
       </>
-    );
+    )
   }
 
   renderSnackbar() {
@@ -193,7 +193,7 @@ class Home extends Nullstack {
           Successfully copied to clipboard!
         </div>
       )
-    );
+    )
   }
 
   render() {
@@ -220,8 +220,8 @@ class Home extends Nullstack {
         </section>
         <Footer />
       </>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home

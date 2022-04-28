@@ -4,11 +4,11 @@ export default function Textarea(props) {
     name,
     rows = 4,
     source,
-    disabled = false,
-    onkeydown = () => {},
-  } = props;
+    disabled,
+    onkeydown,
+  } = props
 
-  const value = source[name];
+  const value = source[name]
 
   return (
     <textarea
@@ -16,7 +16,7 @@ export default function Textarea(props) {
       id={id}
       onkeydown={onkeydown}
       class={
-        "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md text-slate-700 dark:text-slate-500 disabled:opacity-30"
+        'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md text-slate-700 dark:text-slate-500 disabled:opacity-30'
       }
       disabled={disabled}
       bind={source[name]}
@@ -24,5 +24,5 @@ export default function Textarea(props) {
     >
       {value}
     </textarea>
-  );
+  )
 }

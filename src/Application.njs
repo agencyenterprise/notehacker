@@ -1,14 +1,14 @@
-import Nullstack from "nullstack";
-import Home from "./Note/Home";
+import Nullstack from 'nullstack'
+import Home from './Note/Home'
 
-import "./Application.scss";
-import "./styles.css";
+import './Application.scss'
+import './styles.css'
 
 class Application extends Nullstack {
   prepare({ project, page }) {
-    page.locale = "en-US";
-    page.title = `${project.name}`;
-    page.description = `${project.name} for those who live in the matrix`;
+    page.locale = 'en-US'
+    page.title = `${project.name}`
+    page.description = `${project.name} for those who live in the matrix`
   }
 
   renderHead() {
@@ -20,7 +20,7 @@ class Application extends Nullstack {
           rel="stylesheet"
         />
       </head>
-    );
+    )
   }
 
   render() {
@@ -29,8 +29,8 @@ class Application extends Nullstack {
         <Head />
         <Home route="/" />
       </main>
-    );
+    )
   }
 }
 
-export default Application;
+export default Application
