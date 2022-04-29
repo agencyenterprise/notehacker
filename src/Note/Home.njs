@@ -15,7 +15,6 @@ import './Home.scss'
 
 class Home extends Nullstack {
   elapsedSeconds = 0
-  elapsedTime = '00:00:00'
   timerId
   notes = ''
   isRunning = false
@@ -188,7 +187,12 @@ class Home extends Nullstack {
   renderSnackbar() {
     return (
       this.snackBar && (
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 py-1.5 px-3 max-w-fit rounded-md drop-shadow-md text-sm">
+        <div
+          class={`
+            absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+            bg-green-500 py-1.5 px-3 max-w-fit rounded-md drop-shadow-md text-sm
+          `}
+        >
           <CircleCheckIcon class="mr-2" />
           Successfully copied to clipboard!
         </div>
