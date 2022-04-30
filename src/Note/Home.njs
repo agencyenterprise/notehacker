@@ -201,9 +201,18 @@ class Home extends Nullstack {
   }
 
   onlyNumbers({ event }) {
+    if (event.key.toUpperCase() === 'ENTER') {
+      event.preventDefault()
+      event.target.blur()
+    }
     if (!/[0-9]/.test(event.key)) {
       event.preventDefault()
     }
+  }
+
+  updateTimeElapsed({ event }) {
+    const timeElapsed = event.target.textContent
+    console.log(timeElapsed)
   }
 
   render() {
@@ -217,7 +226,7 @@ class Home extends Nullstack {
                 class="text-center py-9 md:text-left time text-slate-700 text-3xl"
                 contenteditable={!this.isRunning}
                 onkeypress={this.onlyNumbers}
-                onblur={({ event }) => console.log(event.target.textContent)}
+                onblur={this.updateTimeElapsed}
                 default
               >
                 {secondsToHms(this.elapsedSeconds)}
