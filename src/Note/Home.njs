@@ -200,6 +200,12 @@ class Home extends Nullstack {
     )
   }
 
+  onlyNumbers({ event }) {
+    if (!/[0-9]/.test(event.key)) {
+      event.preventDefault()
+    }
+  }
+
   render() {
     return (
       <>
@@ -207,7 +213,13 @@ class Home extends Nullstack {
           <div class="wrapper">
             <div class="md:flex md:justify-between items-center pt-4 pb-6">
               <img class="w-36 md:w-48 mx-auto md:mx-0" src="/notehack.svg" />
-              <div class="text-center py-9 md:text-left time text-slate-700 text-3xl">
+              <div
+                class="text-center py-9 md:text-left time text-slate-700 text-3xl"
+                contenteditable={!this.isRunning}
+                onkeypress={this.onlyNumbers}
+                onblur={({ event }) => console.log(event.target.textContent)}
+                default
+              >
                 {secondsToHms(this.elapsedSeconds)}
               </div>
               <div class="flex justify-center md:block">
