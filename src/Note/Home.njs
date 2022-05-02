@@ -1,6 +1,6 @@
 import Nullstack from 'nullstack'
 import copy from 'copy-to-clipboard'
-import { secondsToHms } from '../helpers/timeHelper'
+import { hmsToSeconds, secondsToHms } from '../helpers/timeHelper'
 import Button from '../components/Button'
 import Textarea from '../components/Textarea'
 import Confirm from '../components/Confirm'
@@ -212,7 +212,7 @@ class Home extends Nullstack {
 
   updateTimeElapsed({ event }) {
     const timeElapsed = event.target.textContent
-    console.log(timeElapsed)
+    this.elapsedSeconds = hmsToSeconds(timeElapsed)
   }
 
   render() {
