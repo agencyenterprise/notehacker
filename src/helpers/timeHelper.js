@@ -20,3 +20,13 @@ export function secondsToHms(elapsedSeconds) {
 export function secondsToMin(elapsedSeconds) {
   return elapsedSeconds / 60
 }
+
+/**
+ * Convert formatted time to seconds.
+ * @param formattedHms - The timer.
+ * @returns The total seconds.
+ */
+export function hmsToSeconds(formattedHms) {
+  const [ hours, minutes, seconds ] = formattedHms.split(':')
+  return +hours * 60 * 60 + +minutes * 60 + +seconds
+}
