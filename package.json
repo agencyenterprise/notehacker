@@ -22,6 +22,7 @@
     "clsx": "^1.1.1",
     "copy-to-clipboard": "^3.3.1",
     "dialog-polyfill": "^0.5.6",
+    "nullstack-google-analytics": "^1.0.4",
     "nullstack-tailwind": "^0.2.2"
   }
 }
