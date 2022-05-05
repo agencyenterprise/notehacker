@@ -1,4 +1,5 @@
 import Nullstack from 'nullstack'
+import GoogleAnalytics from 'nullstack-google-analytics'
 import Home from './Note/Home'
 
 import './Application.scss'
@@ -28,6 +29,7 @@ class Application extends Nullstack {
       <main>
         <Head />
         <Home route="/" />
+        <GoogleAnalytics id="G-8FBBTCHMTJ" />
       </main>
     )
   }
