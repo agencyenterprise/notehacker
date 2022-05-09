@@ -4,12 +4,6 @@
   "description": "",
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@tailwindcss/forms": "^0.5.0",
-    "concurrently": "^7.1.0",
-    "nullstack": "^0.15.3",
-    "tailwindcss": "^3.0.23"
-  },
   "scripts": {
     "start": "concurrently \"npm run start-tailwind\" \"npm run start-nullstack\"",
     "build": "npm run build-tailwind && npx nullstack build --mode=ssg --output=dist",
@@ -24,5 +18,11 @@
     "dialog-polyfill": "^0.5.6",
     "nullstack-google-analytics": "^1.0.4",
     "nullstack-tailwind": "^0.2.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.0",
+    "concurrently": "^7.1.0",
+    "nullstack": "^0.15.6",
+    "tailwindcss": "^3.0.23"
   }
 }
