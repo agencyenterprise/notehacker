@@ -9,7 +9,8 @@
     "build": "npm run build-tailwind && npx nullstack build --mode=ssg --output=dist",
     "start-nullstack": "npx nullstack start",
     "start-tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/styles.css --watch",
-    "build-tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/styles.css"
+    "build-tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/styles.css",
+    "reinstall": "rm -rf node_modules package-lock.json yarn.lock .development .production && npm install"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.2",
