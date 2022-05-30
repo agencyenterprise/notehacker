@@ -14,6 +14,19 @@
 
 .notes textarea {
   width: 100%;
-  height: 60vh;
+  height: calc(100vh - 335px);
   min-height: 100px;
+}
+
+.notes textarea:disabled {
+  color: lightgray !important;
+}
+
+.notes .zenmode {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
 }

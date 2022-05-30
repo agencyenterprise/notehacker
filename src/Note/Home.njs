@@ -31,6 +31,7 @@ class Home extends Nullstack {
         this.startPause()
       }
     }
+    shortcuts()
   }
 
   startPause() {
