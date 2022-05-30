@@ -16,7 +16,7 @@ import './Home.scss'
 
 class Home extends Nullstack {
   elapsedSeconds = 0
-  timerId
+  _timerId = null
   notes = ''
   isRunning = false
   snackBar = false
@@ -36,8 +36,8 @@ class Home extends Nullstack {
   }
 
   startPause() {
-    if (!this.timerId) {
-      this.timerId = setInterval(() => {
+    if (!this._timerId) {
+      this._timerId = setInterval(() => {
         ++this.elapsedSeconds
         this.saveSnapshot()
       }, 1000)
@@ -58,7 +58,7 @@ class Home extends Nullstack {
   }
 
   disabledNote() {
-    this.timerId = clearInterval(this.timerId)
+    this._timerId = clearInterval(this._timerId)
     this.isRunning = false
   }
 
@@ -135,12 +135,12 @@ class Home extends Nullstack {
         class="mr-3 w-28 justify-center"
         onclick={this.startPause}
       >
-        {this.timerId ? (
+        {this._timerId ? (
           <PauseIcon class="mr-1.5" />
         ) : (
           <PlayIcon class="mr-1.5" />
         )}
-        {this.timerId ? 'Pause' : 'Start'}
+        {this._timerId ? 'Pause' : 'Start'}
       </Button>
     )
   }
@@ -150,7 +150,7 @@ class Home extends Nullstack {
       <Button
         variant="outlined"
         color="danger"
-        disabled={!this.timerId}
+        disabled={!this._timerId}
         onclick={this.confirmDialog}
       >
         <StopIcon class="mr-1.5" />
