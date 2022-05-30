@@ -10,6 +10,7 @@ import PauseIcon from '../components/PauseIcon'
 import StopIcon from '../components/StopIcon'
 import CircleCheckIcon from '../components/CircleCheckIcon'
 import Footer from '../layout/Footer'
+import shortcuts from '../components/Shortcuts'
 
 import './Home.scss'
 
