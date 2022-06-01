@@ -131,6 +131,7 @@ class Home extends Nullstack {
   renderStartButton() {
     return (
       <Button
+        id="btn-start-pause"
         color="secondary"
         class="mr-3 w-28 justify-center"
         onclick={this.startPause}
@@ -148,6 +149,7 @@ class Home extends Nullstack {
   renderStopButton() {
     return (
       <Button
+        id="btn-stop"
         variant="outlined"
         color="danger"
         disabled={!this._timerId}

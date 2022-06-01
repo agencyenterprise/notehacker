@@ -23,6 +23,7 @@ const styles = {
 
 export default function Button(props) {
   const {
+    id,
     type,
     onclick,
     children,
@@ -42,6 +43,7 @@ export default function Button(props) {
 
   return (
     <button
+      id={id}
       disabled={disabled}
       type={type}
       onclick={onclick}
