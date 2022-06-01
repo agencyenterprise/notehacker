@@ -14,16 +14,17 @@ import shortcuts from '../helpers/shortcuts'
 
 import './Home.scss'
 
+const LS_KEY = 'snap-notes'
+
 class Home extends Nullstack {
   elapsedSeconds = 0
   _timerId = null
   notes = ''
   isRunning = false
   snackBar = false
-  LS_KEY = 'snap-notes'
 
   async hydrate() {
-    const savedSnapshot = localStorage.getItem(this.LS_KEY)
+    const savedSnapshot = localStorage.getItem(LS_KEY)
     const snapshot = JSON.parse(savedSnapshot) || {}
     if (snapshot?.elapsedSeconds > 0) {
       this.elapsedSeconds = snapshot.elapsedSeconds
@@ -98,7 +99,7 @@ class Home extends Nullstack {
     const elapsedSeconds = this.elapsedSeconds
     const notes = this.notes
     localStorage.setItem(
-      this.LS_KEY,
+      LS_KEY,
       JSON.stringify({
         elapsedSeconds,
         isRunning: this.isRunning,
