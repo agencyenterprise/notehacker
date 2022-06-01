@@ -1,4 +1,4 @@
-export default function shortcuts() {
+export default function listenToShortcuts() {
   document.addEventListener('keypress', (event) => {
     // console.log('key pressed', event.shiftKey, event.ctrlKey, event.code)
     // Zen Mode

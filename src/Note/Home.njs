@@ -10,7 +10,7 @@ import PauseIcon from '../components/PauseIcon'
 import StopIcon from '../components/StopIcon'
 import CircleCheckIcon from '../components/CircleCheckIcon'
 import Footer from '../layout/Footer'
-import shortcuts from '../helpers/shortcuts'
+import listenToShortcuts from '../helpers/shortcuts'
 
 import './Home.scss'
 
@@ -33,7 +33,7 @@ class Home extends Nullstack {
         this.startPause()
       }
     }
-    shortcuts()
+    listenToShortcuts()
   }
 
   startPause() {
