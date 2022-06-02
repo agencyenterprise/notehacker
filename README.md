@@ -1,6 +1,6 @@
 # Notehacker
 
-<img src='https://raw.githubusercontent.com/nullstack/nullstack/master/nullstack.png' height='60' alt='Nullstack' />
+A PWA app to take timestamped notes for the ones who lives in the matrix.
 
 ## How to run this Project
 
