@@ -6,7 +6,7 @@ import './Application.scss'
 import './styles.css'
 
 class Application extends Nullstack {
-  prepare({ project, page }) {
+  launch({ project, page }) {
     page.locale = 'en-US'
     page.title = `${project.name}`
     page.description = `${project.name} for those who live in the matrix`
