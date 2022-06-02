@@ -5,5 +5,9 @@ export default function listenToShortcuts() {
     if (event.shiftKey && event.ctrlKey && event.code === 'KeyZ') {
       document.querySelector('textarea').classList.toggle('zenmode')
     }
+    // Start/Pause
+    if (event.shiftKey && event.ctrlKey && event.code === 'KeyS') {
+      document.getElementById('btn-start-pause').click()
+    }
   })
 }
