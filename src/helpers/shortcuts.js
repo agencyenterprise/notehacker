@@ -9,5 +9,9 @@ export default function listenToShortcuts() {
     if (event.shiftKey && event.ctrlKey && event.code === 'KeyS') {
       document.getElementById('btn-start-pause').click()
     }
+    // Stop
+    if (event.shiftKey && event.ctrlKey && event.code === 'KeyX') {
+      document.getElementById('btn-stop').click()
+    }
   })
 }
