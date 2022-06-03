@@ -129,6 +129,21 @@ class Home extends Nullstack {
     }, 3000)
   }
 
+  onlyNumbers({ event }) {
+    if (event.key.toUpperCase() === 'ENTER') {
+      event.preventDefault()
+      event.target.blur()
+    }
+    if (!/[0-9]/.test(event.key)) {
+      event.preventDefault()
+    }
+  }
+
+  updateTimeElapsed({ event }) {
+    const timeElapsed = event.target.textContent
+    this.elapsedSeconds = hmsToSeconds(timeElapsed)
+  }
+
   renderStartButton() {
     return (
       <Button
@@ -203,21 +218,6 @@ class Home extends Nullstack {
         </div>
       )
     )
-  }
-
-  onlyNumbers({ event }) {
-    if (event.key.toUpperCase() === 'ENTER') {
-      event.preventDefault()
-      event.target.blur()
-    }
-    if (!/[0-9]/.test(event.key)) {
-      event.preventDefault()
-    }
-  }
-
-  updateTimeElapsed({ event }) {
-    const timeElapsed = event.target.textContent
-    this.elapsedSeconds = hmsToSeconds(timeElapsed)
   }
 
   render() {
