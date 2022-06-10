@@ -1,6 +1,7 @@
 import Nullstack from 'nullstack'
 import GoogleAnalytics from 'nullstack-google-analytics'
 import Home from './Note/Home'
+import ShortcutHelp from './components/ShortcutHelp'
 
 import './Application.scss'
 import './styles.css'
@@ -29,6 +30,7 @@ class Application extends Nullstack {
       <main>
         <Head />
         <Home route="/" />
+        <ShortcutHelp />
         <GoogleAnalytics id="G-8FBBTCHMTJ" />
       </main>
     )
