@@ -168,7 +168,6 @@ class Home extends Nullstack {
         id="btn-stop"
         variant="outlined"
         color="danger"
-        disabled={!this._timerId}
         onclick={this.confirmDialog}
       >
         <StopIcon class="mr-1.5" />
