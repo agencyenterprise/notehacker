@@ -3,8 +3,7 @@ import GoogleAnalytics from 'nullstack-google-analytics'
 import Home from './Note/Home'
 import ShortcutHelp from './components/ShortcutHelp'
 
-import './Application.scss'
-import './styles.css'
+import '../tailwind.css'
 
 class Application extends Nullstack {
   launch({ project, page }) {

@@ -5,25 +5,23 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "concurrently \"npm run start-tailwind\" \"npm run start-nullstack\"",
-    "build": "npm run build-tailwind && npx nullstack build --mode=ssg --output=dist",
-    "start-nullstack": "npx nullstack start",
-    "start-tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/styles.css --watch",
-    "build-tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/styles.css",
+    "start": "npx nullstack start",
+    "build": "npx nullstack build --mode=ssg --output=dist",
     "reinstall": "rm -rf node_modules package-lock.json yarn.lock .development .production && npm install"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.2",
     "clsx": "^1.1.1",
     "copy-to-clipboard": "^3.3.1",
-    "dialog-polyfill": "^0.5.6",
     "nullstack-google-analytics": "^1.0.4",
-    "nullstack-tailwind": "^0.2.2"
+    "nullstack-tailwind": "^0.2.2",
+    "postcss": "^8.4.21",
+    "postcss-loader": "^7.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/forms": "^0.5.3",
     "concurrently": "^7.1.0",
-    "nullstack": "^0.15.10",
-    "tailwindcss": "^3.0.23"
+    "nullstack": "^0.17.4",
+    "tailwindcss": "^3.2.4"
   }
 }
